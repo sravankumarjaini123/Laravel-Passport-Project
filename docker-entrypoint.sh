@@ -17,8 +17,22 @@ echo "Fixing permissions..."
 chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
+# Ensure .env is writable for key generation
+if [ -f ".env" ]; then
+    chown www-data:www-data .env
+    chmod 664 .env
+fi
+
 # Generate app key if not set
 php artisan key:generate --no-interaction --force
+
+# Force clear all caches manually to avoid boot errors
+rm -f bootstrap/cache/config.php
+rm -f bootstrap/cache/services.php
+rm -f bootstrap/cache/packages.php
+
+php artisan config:clear
+php artisan cache:clear
 
 php artisan migrate --force
 php artisan passport:keys --force

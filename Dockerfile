@@ -1,6 +1,6 @@
 # Stage 1: Build Assets
 FROM node:20-alpine AS build-stage
-MAINTAINER Sravan Kumar Jaini
+LABEL maintainer="Sravan Kumar Jaini"
 WORKDIR /app
 COPY package*.json ./
 RUN npm install

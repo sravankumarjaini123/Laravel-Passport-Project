@@ -17,6 +17,9 @@ echo "Fixing permissions..."
 chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
 chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
+# Generate app key if not set
+php artisan key:generate --no-interaction --force
+
 php artisan migrate --force
 php artisan passport:keys --force
 

@@ -12,6 +12,11 @@ echo "Waiting for database..."
 # Simple sleep for now, can be improved with wait-for-it.sh
 sleep 10
 
+# Fix permissions
+echo "Fixing permissions..."
+chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache
+chmod -R 775 /var/www/storage /var/www/bootstrap/cache
+
 php artisan migrate --force
 php artisan passport:keys --force
 

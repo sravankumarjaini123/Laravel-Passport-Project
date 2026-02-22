@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: sravankumarjaini/docker-image-for-laravel-passport-project
+    image: sravanjaini01/docker-image-for-laravel-passport-project
     container_name: laravel-app
     restart: unless-stopped
     working_dir: /var/www

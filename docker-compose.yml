@@ -3,7 +3,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: laravel-passport-app
+    image: sravan/docker-image-for-laravel-passport-project
     container_name: laravel-app
     restart: unless-stopped
     working_dir: /var/www
@@ -22,7 +22,7 @@ services:
     container_name: laravel-web
     restart: unless-stopped
     ports:
-      - "8000:80"
+      - "8000:8020"
     volumes:
       - ./:/var/www
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
@@ -40,8 +40,6 @@ services:
     environment:
       MYSQL_DATABASE: ${DB_DATABASE:-passportproject}
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD:-root}
-      MYSQL_PASSWORD: ${DB_PASSWORD:-root}
-      MYSQL_USER: ${DB_USERNAME:-root}
     volumes:
       - db-data:/var/lib/mysql
     networks:

@@ -6,7 +6,6 @@ vendor
 Dockerfile
 docker-compose.yml
 nginx.conf
-docker-entrypoint.sh
 storage/*.key
 .vscode
 .idea
